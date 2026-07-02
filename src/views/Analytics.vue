@@ -68,7 +68,7 @@ const generateInsights = () => {
   if (!data.length) {
     insights.value = [{ 
       title: "No Data Streams Detected", 
-      message: "Connect your Wix database collection to see recommendations." 
+      message: "Connect your database collection to see recommendations." 
     }]
     return
   }
