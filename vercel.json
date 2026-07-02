@@ -1,0 +1,26 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    {
+      "source": "/api/patients",
+      "destination": "/api/wix-data.js?collection=QuoteSubmissions"
+    },
+    {
+      "source": "/api/inquiries",
+      "destination": "/api/wix-data.js?collection=ContactMessages"
+    },
+    {
+      "source": "/api/procedures",
+      "destination": "/api/wix-data.js?collection=Procedures"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/wix-data.js?collection=$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
