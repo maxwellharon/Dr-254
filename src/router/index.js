@@ -9,6 +9,8 @@ const routes = [
   { path: '/patients/:id', name: 'patient-detail', component: () => import('../views/PatientDetail.vue'), meta: { requiresAuth: true } },
   { path: '/procedures', component: () => import('../views/Procedures.vue'), meta: { requiresAuth: true } },
   { path: '/inquiries', component: () => import('../views/Inquiries.vue'), meta: { requiresAuth: true } },
+  // ✅ Calendar route (added)
+  { path: '/calendar', component: () => import('../views/CalendarView.vue'), meta: { requiresAuth: true } },
   { path: '/analytics', component: () => import('../views/Analytics.vue'), meta: { requiresAuth: true } }
 ]
 
@@ -19,7 +21,7 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   const { user, authReady } = useAuth()
-  await authReady  // ← Critical: wait for Firebase
+  await authReady   // wait for Firebase auth to initialise
 
   if (to.meta.requiresAuth && !user.value) {
     next('/login')
